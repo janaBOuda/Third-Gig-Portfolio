@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Data Analyst & AI Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #0a0a0a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #121212;
+            border-bottom: 2px solid #1e1e1e;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #00d4ff;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+        }
+
+        nav {
+            background: #1a1a1a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #00d4ff;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #00d4ff;
+            margin: 20px auto 0;
+        }
+
+        #about {
+            background: #0f0f0f;
+            border-top: 1px solid #1e1e1e;
+            border-bottom: 1px solid #1e1e1e;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+        }
+
+        #skills {
+            background: #121212;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .skill-card p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+        }
+
+        #portfolio {
+            background: #0f0f0f;
+            border-top: 1px solid #1e1e1e;
+            border-bottom: 1px solid #1e1e1e;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            color: white;
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #00d4ff;
+        }
+
+        .gallery-overlay p {
+            color: #d0d0d0;
+            font-size: 0.9rem;
+        }
+
+        #contact {
+            background: #121212;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            background: #1a1a1a;
+            padding: 35px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .contact-item a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #00d4ff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            border-color: #00d4ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0.9);
+        }
+
+        .social-links a:hover .social-icon {
+            filter: brightness(0) invert(0);
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: #707070;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #1e1e1e;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .social-links a {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Your Name</h1>
+            <p>Data Analyst | AI Developer</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Experienced Data Analyst and AI Developer specializing in extracting insights from complex datasets and building intelligent systems. Passionate about leveraging machine learning and data science to solve real-world problems and drive business decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Python Programming</h3>
+                    <p>Advanced proficiency in Python for data analysis, machine learning, and automation</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                    <p>Experience with scikit-learn, TensorFlow, PyTorch for building predictive models</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Visualization</h3>
+                    <p>Creating insights through Tableau, Power BI, Matplotlib, Seaborn, and Plotly</p>
+                </div>
+                <div class="skill-card">
+                    <h3>SQL & Databases</h3>
+                    <p>Expert in SQL queries, database design, and working with PostgreSQL, MySQL, MongoDB</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Deep Learning</h3>
+                    <p>Neural networks, NLP, computer vision using modern frameworks and architectures</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Statistical Analysis</h3>
+                    <p>Statistical modeling, hypothesis testing, A/B testing, and experimental design</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Engineering</h3>
+                    <p>ETL pipelines, data warehousing, Apache Spark, and big data technologies</p>
+                </div>
+                <div class="skill-card">
+                    <h3>AI Model Deployment</h3>
+                    <p>MLOps, model deployment, API development with Flask, FastAPI, and cloud services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff" alt="Project 1">
+                    <div class="gallery-overlay">
+                        <h3>Project Title 1</h3>
+                        <p>Data analysis and visualization project</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff" alt="Project 2">
+                    <div class="gallery-overlay">
+                        <h3>Project Title 2</h3>
+                        <p>Machine learning model development</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff" alt="Project 3">
+                    <div class="gallery-overlay">
+                        <h3>Project Title 3</h3>
+                        <p>AI-powered application</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff" alt="Project 4">
+                    <div class="gallery-overlay">
+                        <h3>Project Title 4</h3>
+                        <p>Predictive analytics solution</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff" alt="Project 5">
+                    <div class="gallery-overlay">
+                        <h3>Project Title 5</h3>
+                        <p>Deep learning implementation</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff" alt="Project 6">
+                    <div class="gallery-overlay">
+                        <h3>Project Title 6</h3>
+                        <p>Data pipeline and automation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <a href="mailto:your.email@example.com">omar.m.alsahafi@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <a href="tel:+1234567890">+966 544193922</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/yourusername" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="social-icon">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="social-icon">
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jana. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
